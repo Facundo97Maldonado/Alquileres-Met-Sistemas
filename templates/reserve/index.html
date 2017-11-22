@@ -51,7 +51,8 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-lg-offset-4 reserve_sheet">
+                <div class="col-lg-4 col-lg-offset-4" 
+                    style="border-radius: 10%;padding-bottom:45px;border-top: 1px solid grey;border-bottom: 1px solid grey">
                     <h2 class="text-center">Datos del huesped</h2>
                     <form method="POST">
                         {% csrf_token %}
@@ -64,7 +65,8 @@
                             <label for="">Fecha hasta:</label>
                             <input type="date" name="dateTo" class="form-control">
                         </p>
-                        <button type="submit" class="btn btn-lg btn-warning" style="width: 100%"><span class="glyphicon glyphicon-edit"></span> Reservar</button>
+                        <button type="submit" class="btn btn-lg btn-info" 
+                            style="width: 100%">Reservar</button>
                     </form>
                 </div>
             </div>
