@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title %}Tus Propiedades{% endblock %}
+
+{% block content %}
+<div class="container ml-container">
+    <h1 class="text-center">Propietarios</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            {% for h in hosts %}
+            <div class="panel panel-default">
+                <div class="panel-body" style="position: relative">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="{% static 'img/user.jpg' %}" class="img-responsive img-rounded img-thumbnail" alt="{{h.username}}" style="width: 100%" >
+                        </div>
+                        <div class="col-lg-8" style="margin-top: 25px;">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><b>Nombre de usuario: </b> {{ h.username}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Nombre y apellido: </b> {{ h.first_name}} {{h.last_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>E-mail: </b> {{ h.email}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button class="btn btn-block btn-info" style="margin-top: 15px; right: 5px; bottom: 5px">Ver propiedades</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
