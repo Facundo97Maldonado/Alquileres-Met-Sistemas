@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+	
+	<h2><b>Propiedades</b></h2>
+		<div class="row">
+		{% for r in rooms %}
+	        <div class="col l6">
+	          <div class="card">
+	            <div class="card-image">
+
+	              <img style="padding: 15px 15px 15px 15px;" src="{{r.image.url}}" class="responsive-img">
+
+	              <span class="card-title">
+	              	<b style="text-transform: uppercase;">{{ r.title }}</b>
+	              </span>
+	            </div>
+	            <div class="card-content">
+				  <h5 style="color: black"><i>{{ r.city.name }}</i></h5>
+				  <a href="{% url 'single' room_id=r.id %}">
+				  	<button class="btn waves-effect waves-black right" style="margin-top: -40px;"  
+				  		type="submit"><b>Detalles</b></button>
+				  </a>
+	            </div>
+	            </div>
+	          </div>
+	        
+	    {% endfor %}
+     	</div>
+</div>
+
+<style type="text/css">
+	li:hover {
+		background-color: #84ffff  !important;
+	}
+	.collection {
+		border: 0px solid #e0e0e0;
+	}
+	.collection .collection-item {
+		border-bottom: 0px solid #e0e0e0;
+	}
+	::placeholder {
+   		color:    black;
+	}
+	.btn{
+		background-color: #84ffff !important; 
+		color: black !important;
+	}
+	.btn:hover {
+		color: #18ffff !important; 
+		background-color: black !important;
+	}
+	a {
+		color: black !important;
+	}
+	a:hover{
+		color: #18ffff !important; 
+	}
+</style>
+
+{% endblock %}

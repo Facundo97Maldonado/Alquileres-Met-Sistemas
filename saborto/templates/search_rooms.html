@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+
+	<div class="row">
+		<div class="">
+			<div class="col m8 offset-m2">
+				<h2><b>Busca la propiedad</b></h2>
+			</div>
+			<div class="col m8 offset-m2">
+				<div class="card targ">
+					<form method="GET" action="{% url 'show' %}" class="card-content"> {% csrf_token %}
+						<div class="input-field">
+							<label for="city" style="margin-top: -40px;margin-left: 45px;">Ciudad</label>
+						    <i class="material-icons prefix">home</i>
+						    <input placeholder="Ej: Mar del Plata" name="city" id="icon_prefix" type="text" class="validate">
+						</div>
+						<div class="input-field">
+							<label for="pax" style="margin-top: -40px;margin-left: 45px;">Max Pax</label>
+						    <i class="material-icons prefix">people</i>
+						    <input placeholder="Ej: 2 (personas)" name="pax" id="icon_prefix" 
+						    	type="text" class="validate">
+						</div>
+						<div class="input-field">
+							<label for="date" style="margin-top: -40px;margin-left: 45px;">Fecha Estimada</label>
+						    <i class="material-icons prefix">date_range</i>
+						    <input type="date" name="date" placeholder="date">
+						</div>
+						<button type="submit" class="btn waves-effect waves-black"><b>Search</b></button><br><br>
+			     	</form>
+			    </div>
+		    </div>
+	    </div>
+	</div>
+
+<style type="text/css">
+	li:hover {
+		background-color: #84ffff  !important;
+	}
+	.collection {
+		border: 0px solid #e0e0e0;
+	}
+	.collection .collection-item {
+		border-bottom: 0px solid #e0e0e0;
+	}
+	::placeholder {
+   color:    black;
+	}
+	.naranjita {
+		background-color: #ff9966 !important;
+	}
+	.btn{
+		background-color: #84ffff !important; 
+		color: black !important;
+	}
+	.btn:hover {
+		color: #18ffff !important; 
+		background-color: black !important;
+	}
+</style>
+
+{% endblock %}

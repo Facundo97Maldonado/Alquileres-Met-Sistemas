@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+
+	<h2>Reservation details</h2>
+
+		<div class="row">
+	        <div class="col l6">
+		        <div class=" card z-depth-5">
+		            <div class="card-image">
+		              	<img src="{{r.property.image.url}}" class="responsive-img">
+		              	<span class="card-title"><b>{{ r.property.title }}</b></span>
+		            </div>
+		            <div class="card-content">
+		            	<h5>{{ r.property.city.name }}</h5>
+		            	<label style="color:white;"><b>Total: AR${{ r.total }}</b></label><br>
+						<label style="color:white;"><b>{{ r.code }}</b></label><br>
+		            </div>
+		        </div>
+	        </div>
+	    </div>
+
+</div>
+{% endblock %}
+
+
+
+
+	
+

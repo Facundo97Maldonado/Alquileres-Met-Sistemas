@@ -1,2 +1,13 @@
 db.sqlite3
-.idea/
+Hospedajes/__init__.pyc
+Hospedajes/admin.pyc
+Hospedajes/migrations/0001_initial.pyc
+Hospedajes/migrations/0002_auto_20171110_2014.pyc
+Hospedajes/migrations/__init__.pyc
+Hospedajes/models.pyc
+Hospedajes/views.pyc
+saborto/__init__.pyc
+saborto/settings.pyc
+saborto/urls.pyc
+saborto/wsgi.pyc
+
