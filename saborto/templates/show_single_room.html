@@ -7,30 +7,30 @@
 	<div class="z-depth-5">
 		<div>
 			<h4 class="center" style="color: black;text-transform: capitalize;padding-top: 40px;">
-				<b>{{ room.property.title }}</b></h4>
+				<b>{{ room.title }}</b></h4>
 		    <div class="">
 		        <img style="width: 400px;height: 400px;margin-left: 29%;border-radius: 50%;" 
-		        	src="{{room.property.image.url}}" class="responsive-img z-depth-5">
+		        	src="{{room.image.url}}" class="responsive-img z-depth-5">
 		    </div>
 		    <div class="row">
 			    <div class="col l12">
 				    <div class="sida">
 				    	<h4 style="text-transform: capitalize;">
 				    		Descripcion: 
-				    		<b>{{ room.property.description }}</b>
+				    		<b>{{ room.description }}</b>
 				    	</h4>
 				    	<table class="table z-depth-5">
 				    		<tr>
-				    			<td><b style="margin-left: 30px;">Price per day and person</b></td>
-				    			<td><b>AR$ {{ room.property.priceDays }}</b></td>
+				    			<td><b style="margin-left: 30px;">Precio por dia y persona</b></td>
+				    			<td><b>AR$ {{ room.priceDays }}</b></td>
 				    		</tr>
 				    		<tr>
-				    			<td><b class="sida">Guests maximum amount</b></td>
-				    			<td><b>{{ room.property.maxGuest }}</b></td>
+				    			<td><b class="sida">Pasajeros Maximos</b></td>
+				    			<td><b>{{ room.maxGuest }}</b></td>
 				    		</tr>
 					        <tr>
-				    			<td><b class="sida">Location city</b></td>
-				    			<td><b>{{ room.property.city.name }}</b></td>
+				    			<td><b class="sida">Ciudad</b></td>
+				    			<td><b>{{ room.city.name }}</b></td>
 				    		</tr>
 					        
 						</table>
@@ -43,7 +43,7 @@
 			        <form method="POST"   class="card-content">
 			        	<div class="col m6 offset-m3">
 				        	<b>
-							<input type="hidden" name="propertyId" value="{{room.property.id}}"><br>
+							<input type="hidden" name="propertyId" value="{{room.id}}"><br>
 							<i style="margin-left: -28px;" class="material-icons prefix">pan_tool</i>
 							<input type="text" name="name" placeholder="Nombre"><br>
 							<i style="margin-left: -28px;" class="material-icons prefix">pets</i>

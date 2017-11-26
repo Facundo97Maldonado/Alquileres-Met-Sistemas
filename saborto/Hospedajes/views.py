@@ -19,7 +19,6 @@ def show_all_rooms_view(request):
     if request.method == 'GET':
         try:
             property = Property.objects.all()
-
         except:
             property = []
         return render(request, 'show_all_rooms.html', {'rooms': property})
@@ -50,14 +49,17 @@ def show_singleR_view(request,room_id):
 
     if request.method == 'GET':
         try:
-            singular_room = DateRental.objects.get(id=room_id)
-            return render_to_response('show_single_room.html', {'room': singular_room})
+            if Property:
+                singular_room = Property.objects.get(id=room_id)
+                return render_to_response('show_single_room.html', {'room': singular_room})
+            else:
+                singular_room2 = DateRental.objects.get(id=room_id) #POR ALGUNA RAZON ES 11 ...
+                return render_to_response('show_single_room.html', {'room': singular_room2})
         except:
             return render_to_response('index.html')
 
     elif request.method == 'POST':
         try:
-
             property = Property.objects.get(id=request.POST['propertyId'])
 
             if dateAble(request.POST['fromD'],request.POST['toD'],property):
@@ -80,7 +82,6 @@ def show_singleR_view(request,room_id):
 
                 #return render_to_response('index.html')
                 return redirect('details', id=reservation.id)
-
 
         except:
             print ('Error en la reserva')
