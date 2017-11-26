@@ -9,7 +9,7 @@ import random
 
 def index(request):
     if request.method == 'GET':
-        return render(request, 'search_rooms.html')
+        return render(request, 'show_all_rooms.html')
 
 def search_rooms_view(request):
     if request.method == 'GET':
@@ -71,18 +71,12 @@ def show_singleR_view(request,room_id):
 
                 saveRangeDate(datetime.datetime.strptime(request.POST['fromD'], "%Y-%m-%d").date(), datetime.datetime.strptime(request.POST['toD'], "%Y-%m-%d").date(), reservation, property)
 
-                print (reservation.property.priceDays)
-
                 countDays = amount(datetime.datetime.strptime(request.POST['fromD'], "%Y-%m-%d").date(),datetime.datetime.strptime(request.POST['toD'], "%Y-%m-%d").date())
-
-                print (countDays)
 
                 reservation.total = (reservation.property.priceDays * countDays) * 1.08
                 reservation.save()
 
                 reservation2 = Reservation.objects.get(property = property, guest = guest,code = code)
-
-                print (reservation2.code)
 
                 #return render_to_response('index.html')
                 return redirect('details', id=reservation.id)
@@ -116,14 +110,10 @@ def dateAble(fromD,toD,property):
 
 def saveRangeDate(fromD, toD, reservation, property):
     while(fromD <= toD):
-        print('ENTRO')
         dateRent = DateRental.objects.get(date=fromD,property = property)
-        print(dateRent + 'DIA RENTA PRINCIPIO')
         dateRent.reservation = reservation
-        print(dateRent + 'DIA RENTA RESERVA')
         dateRent.save()
         fromD = fromD + timedelta(days=1)
-        print(fromD + 'FECHA DESDE')
 
 def amount(fromD,toD):
     countD = 0
