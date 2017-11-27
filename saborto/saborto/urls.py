@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^search_rooms/', search_rooms_view, name = 'search'),
     url(r'^show_rooms/', show_rooms_view, name = 'show'),
     url(r'^show_single_room/(?P<room_id>\d+)', show_singleR_view, name = 'single'),
+    url(r'^show_single_rooom/(?P<room_id>\d+)', show_singleR_viewAll, name = 'singleAll'),
     url(r'^det/(?P<id>\d+)', aaa, name = 'details')
 
 

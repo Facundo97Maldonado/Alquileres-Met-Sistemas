@@ -45,22 +45,61 @@ def show_rooms_view(request):
             definitiveProp = []
         return render(request, 'show_rooms.html', {'rooms': definitiveProp})
 
-def show_singleR_view(request,room_id):
+def show_singleR_viewAll(request, room_id):
 
     if request.method == 'GET':
         try:
-            if Property:
-                singular_room = Property.objects.get(id=room_id)
-                return render_to_response('show_single_room.html', {'room': singular_room})
-            else:
-                singular_room2 = DateRental.objects.get(id=room_id) #POR ALGUNA RAZON ES 11 ...
-                return render_to_response('show_single_room.html', {'room': singular_room2})
+            singular_room = Property.objects.get(id=room_id)
+            return render_to_response('show_single_room.html', {'room': singular_room})
         except:
             return render_to_response('index.html')
 
     elif request.method == 'POST':
         try:
+            print ('1')
             property = Property.objects.get(id=request.POST['propertyId'])
+            print ('2')
+            if dateAble(request.POST['fromD'],request.POST['toD'],property):
+                print ('3')
+                guest = Guest(name=request.POST['name'],surename = request.POST['surname'], email = request.POST['email'])
+                guest.save()
+                print ('4')
+                code = random.randint(0, 850000000000000)
+
+                reservation = Reservation(code = code,total = 0, property = property, guest = guest)
+
+                reservation.save()
+                print ('5')
+
+                saveRangeDate(datetime.datetime.strptime(request.POST['fromD'], "%Y-%m-%d").date(), datetime.datetime.strptime(request.POST['toD'], "%Y-%m-%d").date(), reservation, property)
+                print ('6')
+                countDays = amount(datetime.datetime.strptime(request.POST['fromD'], "%Y-%m-%d").date(),datetime.datetime.strptime(request.POST['toD'], "%Y-%m-%d").date())
+                print ('7')
+                reservation.total = (reservation.property.priceDays * countDays) * 1.08
+                reservation.save()
+                print ('8')
+                reservation2 = Reservation.objects.get(property = property, guest = guest,code = code)
+                print ('9')
+                #return render_to_response('index.html')
+                return redirect('details', id=reservation.id)
+
+        except:
+            print ('Error en la reserva')
+    else:
+        return render('index.html')
+
+def show_singleR_view(request,room_id):
+
+    if request.method == 'GET':
+        try:
+            singular_room = DateRental.objects.get(id=room_id)
+            return render_to_response('show_single_room_date.html', {'room': singular_room})
+        except:
+            return render_to_response('index.html')
+
+    elif request.method == 'POST':
+        try:
+            property = DateRental.objects.get(id=request.POST['propertyId'])
 
             if dateAble(request.POST['fromD'],request.POST['toD'],property):
                 guest = Guest(name=request.POST['name'],surename = request.POST['surname'], email = request.POST['email'])
